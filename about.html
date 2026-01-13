@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>關於我們｜CarShine Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="csp-app">
+
+  <header class="navbar">
+    <div class="container row">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.jpg" alt="CarShine Pro">
+      </a>
+      <nav class="navlinks">
+        <a href="index.html">首頁</a>
+        <a href="products.html">精選商品</a>
+        <a href="services.html">職人服務</a>
+        <a href="knowledge.html">洗車知識庫</a>
+        <a href="faq.html">FAQ</a>
+        <a class="active" href="about.html">關於我們</a>
+      </nav>
+      <div class="navright">
+        <button id="openCartBtn" class="icon-btn"><i class="fa-solid fa-cart-shopping"></i><span id="cartBadge" class="badge" style="display:none">0</span></button>
+        <a class="icon-btn" href="member.html"><i class="fa-regular fa-user"></i></a>
+        <button id="menuBtn" class="icon-btn menu-btn"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mobile-menu">
+      <a href="index.html">首頁</a>
+      <a href="products.html">商品</a>
+      <a href="services.html">服務</a>
+      <a href="knowledge.html">知識</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">關於</a>
+      <a href="member.html">會員</a>
+    </div>
+  </header>
+
+  <div class="page-head" style="background:var(--bg-subtle); padding:60px 0;">
+    <div class="container" style="text-align:center; max-width:800px;">
+      <div class="kicker" style="justify-content:center;">OUR STORY</div>
+      <h1 class="hero-title" style="margin-bottom:20px;">我們不只賣商品<br>我們販售「更穩的洗車流程」</h1>
+      <p class="hero-desc" style="margin:0 auto;">
+        很多人洗車卡在「怕刮傷」和「不知道順序」。我們把職人施工拆解成新手也能跟著做的三段式流程，你在 CarShine Pro 買到的不只是瓶罐，而是一整套不踩雷的解法。
+      </p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid3">
+        <div class="panel pad">
+          <div style="width:50px; height:50px; background:#eff6ff; border-radius:12px; display:flex; align-items:center; justify-content:center; color:var(--primary); font-size:24px; margin-bottom:16px;">
+            <i class="fa-solid fa-shield-heart"></i>
+          </div>
+          <div class="h3">核心價值</div>
+          <p class="p">安全第一、效率第二、效果第三。先確保不刮傷，再談如何讓車漆發亮。</p>
+        </div>
+        <div class="panel pad">
+          <div style="width:50px; height:50px; background:#eff6ff; border-radius:12px; display:flex; align-items:center; justify-content:center; color:var(--primary); font-size:24px; margin-bottom:16px;">
+            <i class="fa-solid fa-route"></i>
+          </div>
+          <div class="h3">流程化思維</div>
+          <p class="p">每個商品都有明確的使用順序。你不會買到不知何時該用的東西。</p>
+        </div>
+        <div class="panel pad">
+          <div style="width:50px; height:50px; background:#eff6ff; border-radius:12px; display:flex; align-items:center; justify-content:center; color:var(--primary); font-size:24px; margin-bottom:16px;">
+            <i class="fa-solid fa-check-double"></i>
+          </div>
+          <div class="h3">真實測試</div>
+          <p class="p">所有上架產品皆經過我們實際施工驗證，確保效果可控且風險低。</p>
+        </div>
+      </div>
+
+      <div class="panel pad" style="margin-top:40px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px;">
+        <div>
+          <div class="h3">想了解更多？</div>
+          <p class="p" style="margin:0;">如果有任何洗車問題，歡迎查看我們的知識庫。</p>
+        </div>
+        <a class="btn primary" href="knowledge.html">前往知識庫</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="cartOverlay" class="cart-overlay"></div>
+  <aside id="cartSidebar" class="cart">
+    <div class="head"><span>購物車</span><button id="closeCartBtn" class="icon-btn" style="border:none;"><i class="fa-solid fa-xmark"></i></button></div>
+    <div id="cartItems" class="items"></div>
+    <div class="foot"><div class="row"><span>小計</span><b id="cartSubtotal">NT$ 0</b></div><a class="btn primary full" href="checkout.html">前往結帳</a></div>
+  </aside>
+  <div id="siteFooter"></div>
+  <script src="script.js"></script>
+</body>
+</html>

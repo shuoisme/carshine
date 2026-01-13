@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>結帳｜CarShine Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .field { margin-bottom: 16px; }
+    .field label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px; color: var(--text); }
+    .field input, .field select { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 15px; background: white; transition: border-color 0.2s; }
+    .field input:focus, .field select:focus { border-color: var(--primary); outline: none; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width:600px){ .form-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body class="csp-app">
+
+  <header class="navbar">
+    <div class="container row">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.jpg" alt="CarShine Pro">
+      </a>
+      <nav class="navlinks">
+        <a href="index.html">首頁</a>
+        <a href="products.html">商品</a>
+      </nav>
+      <div class="navright">
+        <a class="icon-btn" href="member.html"><i class="fa-regular fa-user"></i></a>
+        <a class="icon-btn" href="cart.html"><i class="fa-solid fa-arrow-left"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-head" style="background:var(--bg-subtle); padding:30px 0; border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="h2" style="margin:0;">結帳</div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container" style="display:grid; grid-template-columns: 1.2fr 0.8fr; gap:40px; align-items:start;">
+      
+      <div class="panel pad">
+        <div class="h3">收件資訊</div>
+        <div class="hr"></div>
+
+        <form id="checkoutForm">
+          <div class="form-grid">
+            <div class="field">
+              <label>收件人姓名</label>
+              <input name="name" required placeholder="王小明">
+            </div>
+            <div class="field">
+              <label>手機號碼</label>
+              <input name="phone" required placeholder="09xx-xxx-xxx">
+            </div>
+          </div>
+
+          <div class="field">
+            <label>配送地址</label>
+            <input name="address" required placeholder="請輸入完整地址">
+          </div>
+
+          <div class="form-grid">
+            <div class="field">
+              <label>配送方式</label>
+              <select name="shipping" required>
+                <option value="宅配">宅配到府</option>
+                <option value="超商取貨">超商取貨 (示範)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>付款方式</label>
+              <select name="payment" required>
+                <option value="信用卡">信用卡 (示範)</option>
+                <option value="貨到付款">貨到付款</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>備註 (選填)</label>
+            <input name="note" placeholder="例如：請將包裹放置於管理室">
+          </div>
+
+          <button class="btn primary full" type="submit" style="margin-top:16px;">
+            <i class="fa-solid fa-check"></i> 確認訂單
+          </button>
+          
+          <div class="note" style="margin-top:20px;">
+            <b>提示：</b> 這是一個示範網站，不會進行真實扣款或出貨。
+          </div>
+        </form>
+      </div>
+
+      <aside class="panel pad" style="background: #f8fafc;">
+        <div class="h3">訂單內容</div>
+        <div class="hr"></div>
+        <div id="checkoutSummary"></div>
+      </aside>
+
+    </div>
+  </section>
+
+  <div id="cartOverlay" class="cart-overlay"></div>
+  <aside id="cartSidebar" class="cart">
+    <div class="head"><span>購物車</span><button id="closeCartBtn" class="icon-btn" style="border:none;"><i class="fa-solid fa-xmark"></i></button></div>
+    <div id="cartItems" class="items"></div>
+    <div class="foot"><div class="row"><span>小計</span><b id="cartSubtotal">NT$ 0</b></div></div>
+  </aside>
+
+  <div id="siteFooter"></div>
+  <script src="script.js"></script>
+</body>
+</html>

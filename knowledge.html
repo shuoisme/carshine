@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>洗車知識庫｜CarShine Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="csp-app">
+
+  <header class="navbar">
+    <div class="container row">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.jpg" alt="CarShine Pro">
+      </a>
+      <nav class="navlinks">
+        <a href="index.html">首頁</a>
+        <a href="products.html">精選商品</a>
+        <a href="services.html">職人服務</a>
+        <a class="active" href="knowledge.html">洗車知識庫</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">關於我們</a>
+      </nav>
+      <div class="navright">
+        <button id="openCartBtn" class="icon-btn"><i class="fa-solid fa-cart-shopping"></i><span id="cartBadge" class="badge" style="display:none">0</span></button>
+        <a class="icon-btn" href="member.html"><i class="fa-regular fa-user"></i></a>
+        <button id="menuBtn" class="icon-btn menu-btn"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mobile-menu">
+      <a href="index.html">首頁</a>
+      <a href="products.html">商品</a>
+      <a href="services.html">服務</a>
+      <a href="knowledge.html">知識</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">關於</a>
+      <a href="member.html">會員</a>
+    </div>
+  </header>
+
+  <section class="hero" style="padding:60px 0;">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="kicker"><i class="fa-solid fa-graduation-cap"></i> KNOWLEDGE BASE</div>
+        <h1 class="hero-title">洗車不只是潑水<br>而是科學流程</h1>
+        <p class="hero-desc">你會刮傷、會越洗越花，多半不是手殘，是流程不對。我們拆解職人步驟，讓你把「安全」放第一。</p>
+        <a class="btn primary" href="#flow"><i class="fa-solid fa-arrow-down"></i> 查看標準流程</a>
+      </div>
+      <div class="hero-card">
+        <div class="h3">熱門新手疑問</div>
+        <div style="display:grid; gap:12px; margin-top:16px;">
+          <a class="note" href="faq.html#iron" style="cursor:pointer; text-decoration:none; display:block;">
+            <i class="fa-solid fa-circle-question"></i> 鐵粉與柏油怎麼分？
+          </a>
+          <a class="note" href="faq.html#rain" style="cursor:pointer; text-decoration:none; display:block;">
+            <i class="fa-solid fa-circle-question"></i> 下雨天後一定要馬上洗車嗎？
+          </a>
+          <a class="note" href="faq.html#glass" style="cursor:pointer; text-decoration:none; display:block;">
+            <i class="fa-solid fa-circle-question"></i> 玻璃鍍膜總是跳動怎麼辦？
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="flow">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">STEP BY STEP</div>
+        <h2>新手最穩的「三段式流程」</h2>
+        <p>照做就能大幅降低刮傷與洗不乾淨的機率。</p>
+      </div>
+
+      <div class="grid3">
+        <div class="panel pad" style="border-top:4px solid var(--primary);">
+          <div class="pill" style="margin-bottom:12px;">Step 1</div>
+          <div class="h3">預洗與清潔</div>
+          <p class="p">先用高壓水沖去砂塵，再噴灑泡沫軟化汙垢。切記：<b>有砂塵時絕對不要直接擦拭</b>。</p>
+          <a class="btn ghost full" href="products.html">推薦：洗車精 / 海綿</a>
+        </div>
+
+        <div class="panel pad" style="border-top:4px solid #0ea5e9;">
+          <div class="pill" style="margin-bottom:12px; background:#e0f2fe; color:#0284c7;">Step 2</div>
+          <div class="h3">深層去汙 (選配)</div>
+          <p class="p">若車身摸起來粗粗的、輪框有黑點，才需要用鐵粉劑或柏油劑。<b>先洗乾淨再去汙</b>效果最好。</p>
+          <a class="btn ghost full" href="products.html">推薦：去汙噴霧</a>
+        </div>
+
+        <div class="panel pad" style="border-top:4px solid #0f172a;">
+          <div class="pill" style="margin-bottom:12px; background:#f1f5f9; color:#475569;">Step 3</div>
+          <div class="h3">收尾與保護</div>
+          <p class="p">沖淨後<b>立刻擦乾</b>避免水痕。可使用快速封體或鍍膜，增加下次清洗的便利性。</p>
+          <a class="btn ghost full" href="products.html">推薦：大毛巾 / 鍍膜</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:white; border-top:1px solid var(--border);">
+    <div class="container">
+      <div class="section-head">
+        <h2>精選文章</h2>
+        <p>解決你 90% 的洗車疑惑。</p>
+      </div>
+
+      <div class="grid3">
+        <article class="card">
+          <div class="thumb" style="height:200px; padding:0;">
+            <img src="assets/img/article-iron.jpg" alt="鐵粉柏油教學" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <div class="body">
+            <div class="meta" style="font-size:12px; color:var(--muted); margin-bottom:4px;">去汙教學 · 5 min</div>
+            <div class="title">鐵粉、柏油、水垢：到底差在哪？</div>
+            <div class="desc">汙垢不是「洗車精」就能解決，先判斷類型再選產品，才不會越洗越花。</div>
+            <a class="btn ghost full" href="https://www.google.com/search?q=汽車鐵粉柏油差別" target="_blank">閱讀更多</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb" style="height:200px; padding:0;">
+            <img src="assets/img/article-water.jpg" alt="水垢水痕教學" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <div class="body">
+            <div class="meta" style="font-size:12px; color:var(--muted); margin-bottom:4px;">收尾技巧 · 4 min</div>
+            <div class="title">水痕 vs 水垢：擦乾就好嗎？</div>
+            <div class="desc">雨後白白一圈不一定是「水痕」，可能是礦物殘留。認錯就會一直擦、一直出細紋。</div>
+            <a class="btn ghost full" href="https://www.google.com/search?q=汽車水痕水垢差別" target="_blank">閱讀更多</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb" style="height:200px; padding:0;">
+            <img src="assets/img/article-glass.jpg" alt="玻璃鍍膜教學" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <div class="body">
+            <div class="meta" style="font-size:12px; color:var(--muted); margin-bottom:4px;">防護觀念 · 6 min</div>
+            <div class="title">玻璃鍍膜怎麼做才穩？三個關鍵</div>
+            <div class="desc">玻璃鍍膜最怕「除油沒做好」與「玻璃沒乾」。把前置做對，撥水才能穩定持久。</div>
+            <a class="btn ghost full" href="https://www.google.com/search?q=汽車玻璃鍍膜教學" target="_blank">閱讀更多</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div id="cartOverlay" class="cart-overlay"></div>
+  <aside id="cartSidebar" class="cart">
+    <div class="head"><span>購物車</span><button id="closeCartBtn" class="icon-btn" style="border:none;"><i class="fa-solid fa-xmark"></i></button></div>
+    <div id="cartItems" class="items"></div>
+    <div class="foot"><div class="row"><span>小計</span><b id="cartSubtotal">NT$ 0</b></div><a class="btn primary full" href="checkout.html">前往結帳</a></div>
+  </aside>
+  <div id="siteFooter"></div>
+  <script src="script.js"></script>
+</body>
+</html>

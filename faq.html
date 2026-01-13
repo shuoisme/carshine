@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>常見問題｜CarShine Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>html { scroll-padding-top: 100px; }</style>
+</head>
+<body class="csp-app">
+
+  <header class="navbar">
+    <div class="container row">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.jpg" alt="CarShine Pro">
+      </a>
+      <nav class="navlinks">
+        <a href="index.html">首頁</a>
+        <a href="products.html">精選商品</a>
+        <a href="services.html">職人服務</a>
+        <a href="knowledge.html">洗車知識庫</a>
+        <a class="active" href="faq.html">FAQ</a>
+        <a href="about.html">關於我們</a>
+      </nav>
+      <div class="navright">
+        <button id="openCartBtn" class="icon-btn"><i class="fa-solid fa-cart-shopping"></i><span id="cartBadge" class="badge" style="display:none">0</span></button>
+        <a class="icon-btn" href="member.html"><i class="fa-regular fa-user"></i></a>
+        <button id="menuBtn" class="icon-btn menu-btn"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mobile-menu">
+      <a href="index.html">首頁</a>
+      <a href="products.html">商品</a>
+      <a href="services.html">服務</a>
+      <a href="knowledge.html">知識</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">關於</a>
+      <a href="member.html">會員</a>
+    </div>
+  </header>
+
+  <div class="page-head" style="background:var(--bg-subtle); padding:60px 0;">
+    <div class="container" style="text-align:center;">
+      <h1 class="hero-title" style="margin-bottom:16px;">常見問題</h1>
+      <p class="hero-desc" style="margin:0 auto;">關於出貨、產品使用與退換貨的疑問。</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container" style="max-width:800px; display:grid; gap:30px;">
+      
+      <div>
+        <div class="h3" style="color:var(--primary)"><i class="fa-solid fa-star"></i> 新手必讀疑問</div>
+        <div class="panel pad">
+          <div id="iron" style="margin-bottom:20px;">
+            <div style="font-weight:700; margin-bottom:6px; font-size:18px;">Q：鐵粉與柏油怎麼分？</div>
+            <div class="p" style="margin:0;">
+              <b>A：靠觸感與視覺分辨。</b><br>
+              ● <b>鐵粉：</b>摸起來「粗粗的、像砂紙」，通常呈現橘黃色小點。請使用去汙黏土或鐵粉劑。<br>
+              ● <b>柏油：</b>看起來是「黑色小斑點」，摸起來微凸且黏。請使用柏油去除劑溶解。
+            </div>
+          </div>
+          <div class="hr"></div>
+          <div id="rain" style="margin-bottom:20px;">
+            <div style="font-weight:700; margin-bottom:6px; font-size:18px;">Q：下雨天後一定要馬上洗車嗎？</div>
+            <div class="p" style="margin:0;">
+              <b>A：建議盡快清洗。</b><br>
+              雨水中含有酸性物質與空氣髒污，乾掉後容易形成「水垢」侵蝕金屬與車漆。若無法馬上洗，至少先用清水沖過並擦乾。
+            </div>
+          </div>
+          <div class="hr"></div>
+          <div id="glass">
+            <div style="font-weight:700; margin-bottom:6px; font-size:18px;">Q：玻璃鍍膜總是跳動怎麼辦？</div>
+            <div class="p" style="margin:0;">
+              <b>A：通常是「油膜沒除乾淨」或「雨刷硬化」。</b><br>
+              1. 施作前必須使用歸零膏徹底去除油膜，直到水呈現「親水狀（整片攤平）」才能上鍍膜。<br>
+              2. 若玻璃乾淨仍跳動，建議更換矽膠雨刷或塗抹雨刷潤滑劑。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="h3"><i class="fa-solid fa-truck-fast"></i> 出貨與配送</div>
+        <div class="panel pad">
+          <div style="margin-bottom:16px;">
+            <div style="font-weight:700; margin-bottom:6px;">Q：下單後多久出貨？</div>
+            <div class="p" style="margin:0;">A：現貨商品會在 24 小時內完成出貨（不含假日）。配送時間約 2-3 天。</div>
+          </div>
+          <div class="hr"></div>
+          <div>
+            <div style="font-weight:700; margin-bottom:6px;">Q：有免運門檻嗎？</div>
+            <div class="p" style="margin:0;">A：單筆訂單滿 NT$ 1,500 即享免運優惠。</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="h3"><i class="fa-solid fa-circle-exclamation"></i> 產品使用</div>
+        <div class="panel pad">
+          <div style="margin-bottom:16px;">
+            <div style="font-weight:700; margin-bottom:6px;">Q：洗車一定要兩桶水嗎？</div>
+            <div class="p" style="margin:0;">A：建議使用。一桶裝泡沫、一桶裝清水（洗海綿用），能大幅降低砂石刮傷車漆的風險。</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div id="cartOverlay" class="cart-overlay"></div>
+  <aside id="cartSidebar" class="cart">
+    <div class="head"><span>購物車</span><button id="closeCartBtn" class="icon-btn" style="border:none;"><i class="fa-solid fa-xmark"></i></button></div>
+    <div id="cartItems" class="items"></div>
+    <div class="foot"><div class="row"><span>小計</span><b id="cartSubtotal">NT$ 0</b></div><a class="btn primary full" href="checkout.html">前往結帳</a></div>
+  </aside>
+  <div id="siteFooter"></div>
+  <script src="script.js"></script>
+</body>
+</html>
