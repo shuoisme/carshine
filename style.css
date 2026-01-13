@@ -45,10 +45,12 @@ a {
   transition: .2s;
 }
 
+/* [修正] 強制按鈕與輸入框繼承字體大小，解決手機版字體過小問題 */
 button,
 input,
 select {
   font-family: inherit;
+  font-size: inherit; 
   outline: none;
 }
 
@@ -121,6 +123,11 @@ body.csp-app .btn {
   border: 1px solid var(--border);
   background: #fff;
   color: var(--text);
+  
+  /* [修正] 統一設定字體大小與行高，確保按鈕與連結看起來一樣大 */
+  font-size: 15px; 
+  line-height: 1.2;
+  min-height: 42px; /* 確保按鈕有足夠高度好點擊 */
 }
 
 body.csp-app .btn:hover {
@@ -252,6 +259,7 @@ body.csp-app .icon-btn {
   position: relative;
   transition: .2s;
   color: var(--text);
+  font-size: 16px; /* [修正] 確保 icon 按鈕大小一致 */
 }
 
 body.csp-app .icon-btn:hover {
@@ -410,8 +418,9 @@ body.csp-app .card .price {
 body.csp-app .card .actions {
   margin-top: 16px;
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 10px;
+  /* [修正] 1:1 等寬，這樣「查看」與「加入」按鈕會一樣寬 */
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
 
 /* 數量選擇樣式 */
@@ -439,6 +448,7 @@ body.csp-app .qty-selector button {
   cursor: pointer;
   color: var(--muted);
   transition: .2s;
+  font-size: 16px; /* 數量按鈕也要統一 */
 }
 
 body.csp-app .qty-selector button:hover {
@@ -825,5 +835,51 @@ body.csp-app .sumrow.total {
 
   body.csp-app .brand__name {
     display: none;
+  }
+}
+/* =========================================
+   會員中心 RWD 
+   ========================================= */
+
+/* 電腦版預設：左邊選單 (280px) + 右邊內容 (自動寬度) */
+.member-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* 手機版修正 (螢幕小於 900px 時觸發) */
+@media (max-width: 900px) {
+  .member-grid {
+    /* 強制改為單欄，讓選單跟內容垂直堆疊 */
+    grid-template-columns: 1fr !important; 
+    gap: 20px;
+  }
+  
+  /* 讓選單區塊在手機上滿版，並增加一點底部距離 */
+  .member-grid aside {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+/* =========================================
+   結帳頁面 RWD
+   ========================================= */
+
+/* 電腦版：左邊填寫資料 (1.2等份) + 右邊訂單摘要 (0.8等份) */
+.checkout-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* 手機版修正 (螢幕小於 900px 時觸發) */
+@media (max-width: 900px) {
+  .checkout-grid {
+    /* 強制改為單欄，讓表單跟訂單內容垂直堆疊 */
+    grid-template-columns: 1fr !important;
+    gap: 30px;
   }
 }

@@ -1,4 +1,4 @@
-/* script.js - 2026 最終完整版 (含商品頁數量選擇 + 專業頁尾支援) */
+/* script.js - 2026 最終完整版 (含商品頁數量選擇 + 專業頁尾支援 + 手機版型修正) */
 
 /* =========================
    1. 基礎工具
@@ -105,7 +105,7 @@ window.switchTab = (t) => {
 };
 window.handleSaveSettings = (e) => { e.preventDefault(); const n = $("#settingNameInput").value.trim(); if(n){ localStorage.setItem(LS_USER, n); checkLoginStatus(); toast("設定已更新"); } };
 
-// 購物車操作 (核心修正)
+// 購物車操作
 window.addToCart = (id, qty = 1) => {
   const item = findItem(id); if(!item) return;
   let cart = getCart(); const ex = cart.find(i=>i.id===id);
@@ -118,7 +118,6 @@ window.addBundleToCart = (bid, qty = 1) => {
   const b = findItem(bid); if(!b) return;
   if(b.includes) {
     let cart = getCart();
-    // 每個子商品都要加上 qty 份
     b.includes.forEach(pid => { 
         const ex = cart.find(i=>i.id===pid); 
         if(ex) ex.qty += qty; 
@@ -128,7 +127,7 @@ window.addBundleToCart = (bid, qty = 1) => {
   } else window.addToCart(bid, qty);
 };
 
-// 從卡片加入 (讀取卡片上的 input)
+// 從卡片加入
 window.addToCartFromCard = (id) => {
     const el = document.getElementById(`qty-${id}`);
     const qty = el ? parseInt(el.value) : 1;
@@ -157,7 +156,6 @@ window.closeCartSidebar = () => { $("#cartOverlay")?.classList.remove("active");
 
 // UI Helpers
 function createCard(item) {
-  // 這裡按鈕改成呼叫 addToCartFromCard
   const btnAction = `addToCartFromCard('${item.id}')`;
   const badgeHTML = item.badge ? `<div class="pill">${item.badge}</div>` : `<div class="pill">${item.cat}</div>`;
   const imgHtml = `<img src="${item.img}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`;
@@ -259,16 +257,31 @@ function renderCartPage(cart) {
   if($("#cartPageTotal")) $("#cartPageTotal").textContent = money(total+shipping);
 }
 
+// [修正] 結帳頁面下單區：防止手機版文字重疊 (Flexbox 優化)
 function renderCheckoutSummary(cart) {
   const box = $("#checkoutSummary"); if(!box) return;
   let total=0, html="";
   cart.forEach(ci => {
     const p = findItem(ci.id); if(!p) return;
     total += p.price * ci.qty;
-    html += `<div style="display:flex;justify-content:space-between;margin-bottom:10px;font-size:14px;"><span>${p.name} × ${ci.qty}</span><span>${money(p.price*ci.qty)}</span></div>`;
+    // 使用 min-width:0 與 flex-wrap 確保文字不會撐破版面
+    html += `
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px; font-size:14px; gap:12px; border-bottom:1px dashed #f1f5f9; padding-bottom:8px;">
+        <div style="flex:1; min-width:0;">
+            <div style="line-height:1.4; color:var(--text); word-break:break-word;">${p.name}</div>
+            <div style="font-size:12px; color:var(--muted);">數量: ${ci.qty}</div>
+        </div>
+        <div style="font-weight:700; white-space:nowrap; text-align:right;">
+            <div>${money(p.price*ci.qty)}</div>
+        </div>
+      </div>`;
   });
   const shipping = total>=1500 ? 0 : (total===0?0:60);
-  html += `<div class="hr"></div><div style="display:flex;justify-content:space-between;margin-bottom:12px;"><span>小計</span><span>${money(total)}</span></div><div style="display:flex;justify-content:space-between;font-weight:800;font-size:18px;color:#2563eb;"><span>總計</span><span>${money(total+shipping)}</span></div>`;
+  html += `
+    <div style="display:flex;justify-content:space-between;margin-bottom:12px;"><span>小計</span><span>${money(total)}</span></div>
+    <div style="display:flex;justify-content:space-between;margin-bottom:12px;"><span>運費</span><span>${shipping===0?"免運費":money(shipping)}</span></div>
+    <div class="hr"></div>
+    <div style="display:flex;justify-content:space-between;font-weight:800;font-size:18px;color:#2563eb;"><span>總計</span><span>${money(total+shipping)}</span></div>`;
   box.innerHTML = html;
 }
 
@@ -339,8 +352,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
 
-      // 詳情頁也改用新的 addToCartFromCard 邏輯 (雖然這裡 ID 沒變，但保持一致好維護)
-      // 這裡直接共用 qtyInput 邏輯
       detailHost.innerHTML = `
         <div class="hero-grid" style="align-items:start; gap:50px;">
           <div style="background:#fff; border:1px solid #e2e8f0; border-radius:24px; padding:40px; display:flex; justify-content:center; align-items:center; box-shadow:0 10px 30px rgba(0,0,0,0.03);">
@@ -382,6 +393,7 @@ document.addEventListener("DOMContentLoaded", () => {
     alert("訂單已建立！"); window.location.href = "member.html";
   });
 
+  // [修正] 會員中心近期訂單：手機版商品清單改為條列式，避免擠成一坨
   const ordersBox = $("#ordersBox");
   if (ordersBox) {
     const user = localStorage.getItem(LS_USER);
@@ -404,13 +416,30 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         ordersBox.innerHTML = "";
         orders.forEach(o => {
+          // [優化] 商品清單 HTML 生成邏輯
+          const itemsHtml = o.items.map(i => {
+             const p = findItem(i.id);
+             if(!p) return '';
+             return `<div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; font-size:14px; color:#475569; margin-bottom:6px; padding-bottom:6px; border-bottom:1px dashed #f1f5f9;">
+                       <div style="flex:1; min-width:0;">
+                           <div style="line-height:1.4; font-weight:500; word-break:break-word;">${p.name}</div>
+                           <div style="font-size:12px; color:#94a3b8;">數量: ${i.qty}</div>
+                       </div>
+                       <div style="font-weight:600; white-space:nowrap; color:#334155;">${money(p.price * i.qty)}</div>
+                     </div>`;
+          }).join('');
+
           ordersBox.innerHTML += `
             <div class="panel pad" style="margin-bottom:16px;">
               <div class="row"><span style="font-weight:800;">#${o.id}</span><span class="pill">${o.status}</span></div>
               <div class="hr"></div>
-              <div style="color:#64748b; font-size:14px;">${o.date}</div>
-              <div style="margin:10px 0;">${o.items.map(i => { const p=findItem(i.id); return p ? `${p.name} x${i.qty}` : ''; }).join('、')}</div>
-              <div style="text-align:right; font-weight:800; color:#2563eb;">${money(o.total)}</div>
+              <div style="color:#64748b; font-size:14px; margin-bottom:12px;">${o.date}</div>
+              
+              <div style="background:#f8fafc; padding:12px; border-radius:8px; margin-bottom:12px;">
+                 ${itemsHtml}
+              </div>
+
+              <div style="text-align:right; font-weight:800; color:#2563eb;">總計 ${money(o.total)}</div>
             </div>`;
         });
       }
